@@ -7,6 +7,12 @@ import { MaterialsModule } from './materials/materials.module';
 import { AppRoutingModule } from './app-routing.module';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { AuthGuard } from './auth.guard';
+import { StoreModule } from '@ngrx/store';
+import { reducers, metaReducers } from './store/reducers';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
+import { EffectsModule } from '@ngrx/effects';
+import { AppEffects } from './store/effects/app.effects';
 
 @NgModule({
   declarations: [
@@ -18,7 +24,10 @@ import { AuthGuard } from './auth.guard';
     NgbModule,
     MaterialsModule,
     AppRoutingModule,
-    DashboardModule
+    DashboardModule,
+    StoreModule.forRoot(reducers, { metaReducers }),
+    !environment.production ? StoreDevtoolsModule.instrument() : [],
+    EffectsModule.forRoot([AppEffects])
   ],
   providers: [AuthGuard],
   bootstrap: [AppComponent]
