@@ -1,8 +1,4 @@
-#login-container {
-    position: relative;
-}
-
-#login-window {
+#portal-container {
     border: 1px solid Black;
     background-color: azure;
     opacity: .9;
@@ -12,9 +8,4 @@
     padding: 20px;
     top: 25vh;
     left: 35vw; 
-}
-
-.login-image {
-    width: 100%;
-    height: 100vh;
 }
