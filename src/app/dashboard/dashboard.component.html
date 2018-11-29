@@ -1,5 +1,14 @@
+<nav class="navbar navbar-dark bg-dark">
+  <span class="navbar-text">
+    CheckThis.io
+  </span>
+  <button class="btn btn-outline-success my-2 my-sm-0" type="button" (click)="open(content)">Add Item</button>
+</nav>
 <section id="dashboard-container">
-  <div class="col-md-3">
-    <todo-form class="pa2"></todo-form>
-  </div>
 </section>
+
+<!-- To-do Form -->
+<ng-template #content let-modal>
+  <todo-form class="pa2"></todo-form>
+</ng-template>
+  
