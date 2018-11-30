@@ -7,11 +7,18 @@ import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-
+  cities = [
+    {label:'Select City', value:null},
+    {label:'New York', value:{id:1, name: 'New York', code: 'NY'}},
+    {label:'Rome', value:{id:2, name: 'Rome', code: 'RM'}},
+    {label:'London', value:{id:3, name: 'London', code: 'LDN'}},
+    {label:'Istanbul', value:{id:4, name: 'Istanbul', code: 'IST'}},
+    {label:'Paris', value:{id:5, name: 'Paris', code: 'PRS'}}
+];
   closeResult: string;
 
   constructor(private modalService: NgbModal) {}
-
+  
   open(content) {
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
