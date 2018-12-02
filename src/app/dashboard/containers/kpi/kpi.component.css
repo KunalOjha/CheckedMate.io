@@ -1,9 +1,8 @@
 .kpi-window {
     background-color: lavender;
-    border: 3px solid lightslategray;
     text-align: center;
     font-weight: 700;
-    -webkit-box-shadow: 0px 2px 5px 0px lightslategray;
-    -moz-box-shadow: 0px 2px 5px 0px lightslategray;
-    box-shadow: 0px 2px 5px 0px lightslategray;
+    -webkit-box-shadow: 0px 2px 5px 0px dimgray;
+    -moz-box-shadow: 0px 2px 5px 0px dimgray;
+    box-shadow: 0px 2px 5px 0px dimgray;
 }

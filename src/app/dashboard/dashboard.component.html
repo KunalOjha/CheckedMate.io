@@ -5,20 +5,25 @@
   <button class="btn btn-outline-success my-2 my-sm-0" type="button" (click)="open(content)">Add Item</button>
 </nav>
 <section id="dashboard-container">
-  <app-kpi></app-kpi>
-  <div class="dashboard-heading pv3">
-    <h1>John Doe's Dashboard</h1>
-    <p-dropdown [options]="cities"></p-dropdown>
-  </div>
-  <br>
-  <div class="row">
-    <div class="col-md-5">
-      <kpi-pie-chart></kpi-pie-chart>
-    </div>
-    <div class="col-md-6 bg-washed-blue">
-        <kpi-line-chart></kpi-line-chart>
-      </div>
-  </div>
+    <mat-sidenav-container class="dashboard-content">
+        <mat-sidenav class="dashboard-sidenav" mode="side" opened>Main Dashboard</mat-sidenav>
+        <mat-sidenav-content>
+            <app-kpi></app-kpi>
+            <div class="dashboard-heading pv3">
+                <h1>John Doe's Dashboard</h1>
+                <p-dropdown [options]="cities"></p-dropdown>
+              </div>
+              <br>
+              <div class="row">
+                <div class="col-md-5">
+                  <kpi-pie-chart></kpi-pie-chart>
+                </div>
+                <div class="col-md-6 bg-washed-blue">
+                    <kpi-line-chart></kpi-line-chart>
+                  </div>
+              </div>
+        </mat-sidenav-content>
+      </mat-sidenav-container>      
 </section>
 <!-- To-do Form -->
 <ng-template #content let-modal>
