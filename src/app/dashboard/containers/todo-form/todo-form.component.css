@@ -1,1 +1,12 @@
-.mat-datepicker-content{    z-index: 1200}
+#todo-form {
+    text-align: center
+}
+
+#todo-form * {
+    margin: 0 auto;
+}
+
+#todo-submit-button {
+    text-align: right !important;
+    margin-top: 1.5rem;
+}

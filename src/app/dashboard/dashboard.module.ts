@@ -17,6 +17,7 @@ import { MaterialsModule } from '../materials/materials.module';
     ChartModule,
     DropdownModule
   ],
-  declarations: [DashboardComponent, TodoFormComponent, KPIComponent, KpiPieChartComponent, KpiLineChartComponent]
+  declarations: [DashboardComponent, TodoFormComponent, KPIComponent, KpiPieChartComponent, KpiLineChartComponent],
+  entryComponents:[TodoFormComponent]
 })
 export class DashboardModule { }
