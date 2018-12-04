@@ -1,12 +1,12 @@
-<form id="todo-form" class="pa3 bg-light-yellow ba bw1">
+<form id="todo-form" class="pa3">
   <h2>Add New Item</h2>
   <hr>
-  <mat-form-field class="pt3">
-    <input matInput [matDatepicker]="picker" placeholder="Choose a due date">
+  <mat-form-field class=" w-60 pt3">
+    <input matInput [matDatepicker]="picker" placeholder="Due Date">
     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>
   </mat-form-field>
-  <mat-form-field>
+  <mat-form-field class="w-60">
     <mat-select placeholder="Category">
       <mat-option [value] ="Personal">
         Personal
@@ -20,13 +20,16 @@
       </mat-select>
     </mat-form-field>
   <br>
-  <label><strong>Title</strong></label>
+    <mat-form-field class="w-80">
+      <input class="sticky-note" matInput placeholder="Title">
+    </mat-form-field>
   <br>
-  <input class="w-80">
+    <mat-form-field class="w-80">
+      <textarea class="sticky-note" matInput placeholder="Description"></textarea>
+    </mat-form-field>
   <br>
-  <label><strong>Description</strong></label>
-  <br>
-  <textarea class="w-80"></textarea>
-  <br>
-  <button id="todo-submit-button" class="btn btn-success pv3" type="button">Add</button>
+  <div class="row">
+    <button id="todo-submit-button" class="btn btn-default pv3" type="button">Cancel</button>
+    <button id="todo-submit-button" class="btn btn-success pv3" type="button">Add</button>
+  </div>
 </form>
