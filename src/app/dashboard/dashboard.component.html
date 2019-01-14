@@ -20,12 +20,26 @@
                 <p-dropdown [options]="cities"></p-dropdown>
               </div>
               <br>
-              <div class="row">
+              <div class="row pl6">
                 <div class="col-md-5">
-                  <kpi-pie-chart></kpi-pie-chart>
+                  <div class="card kpi-tile">
+                    <div class="card-header card-title bg-dark">
+                      Total Count
+                      </div>
+                      <div class="card-body bg-secondary">
+                        <kpi-pie-chart></kpi-pie-chart>
+                      </div>
+                  </div>
                 </div>
-                <div class="col-md-6 bg-washed-blue">
-                    <kpi-line-chart></kpi-line-chart>
+                <div class="col-md-6">
+                  <div class="card kpi-tile">
+                    <div class="card-header card-title bg-dark">
+                      Yearly Progress
+                    </div>
+                    <div class="card-body bg-secondary">
+                        <kpi-line-chart></kpi-line-chart>
+                    </div>
+                  </div>
                   </div>
               </div>
         </mat-sidenav-content>

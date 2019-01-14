@@ -27,3 +27,11 @@
     width: 100%;
     height: 100vh;
   }
+
+.dashboard-sidenav-option {
+    color: lightcyan;
+}
+
+.card-title {
+    color: lightcyan
+}

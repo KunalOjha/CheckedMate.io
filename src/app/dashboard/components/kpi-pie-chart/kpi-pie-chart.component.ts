@@ -11,7 +11,13 @@ export class KpiPieChartComponent implements OnInit {
 
   ngOnInit() {
   }
-
+  chartOptions = {
+    legend: {
+        labels: {
+            fontColor: 'lightcyan'
+        }
+    }
+};
   data = {
     labels: ['Due','Upcoming','Completed'],
     datasets: [
