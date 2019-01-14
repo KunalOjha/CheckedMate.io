@@ -26,11 +26,11 @@ export class TodoFormComponent implements OnInit {
   ngOnInit() {
   }
 
-  onAddItem() {
+  onAddTask() {
     this.dialog.closeAll();
   }
 
-  onCancelItem() {
+  onCancelTask() {
     this.dialog.closeAll();
   }
 }

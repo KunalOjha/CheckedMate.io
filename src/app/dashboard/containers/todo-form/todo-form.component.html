@@ -1,5 +1,5 @@
-<form id="todo-form" class="pa3" [formGroup]="todoForm" (ngSubmit)="onAddItem()">
-    <h2>Add New Item</h2>
+<form id="todo-form" class="pa3" [formGroup]="todoForm" (ngSubmit)="onAddTask()">
+    <h2>New Task</h2>
     <hr>
     <mat-form-field class=" w-60 pt3">
        <input matInput [matDatepicker]="picker" placeholder="Due Date" formControlName="dueDate">
@@ -23,9 +23,8 @@
     </mat-form-field>
     <br>
     <div class="row">
-       <button id="todo-submit-button" class="btn btn-default pv3" type="button" (click)="onCancelItem()">Cancel</button>
+       <button id="todo-submit-button" class="btn btn-default pv3" type="button" (click)="onCancelTask()">Cancel</button>
        <button id="todo-submit-button" class="btn btn-success pv3" type="submit">Add</button>
     </div>
-    <!-- <pre>{{ todoForm.value | json }}</pre> -->
  </form>
  
