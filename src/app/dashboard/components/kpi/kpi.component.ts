@@ -7,7 +7,7 @@ import { IAppState } from '../../../store/reducers';
   templateUrl: './kpi.component.html',
   styleUrls: ['./kpi.component.css']
 })
-export class KPIComponent implements OnInit {
+export class KPIComponent implements OnInit, OnChanges {
   taskSummary$;
 
   @Input() kpiData;
@@ -15,6 +15,13 @@ export class KPIComponent implements OnInit {
   constructor(private store : Store<IAppState>) { }
 
   ngOnInit() {
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['kpiData'].currentValue !== changes['kpiData'].previousValue) {
+
+      this.kpiData = changes['kpiData'].currentValue.count;
+    }
   }
 
 }
