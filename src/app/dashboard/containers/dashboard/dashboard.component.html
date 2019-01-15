@@ -15,33 +15,33 @@
         </mat-sidenav>
         <mat-sidenav-content>
             <app-kpi [kpiData]="userTasksData"></app-kpi>
-            <div class="dashboard-heading pv4">
-                <h1>John Doe's Dashboard</h1>
-                <p-dropdown [options]="cities"></p-dropdown>
-              </div>
+              <div class="dashboard-heading form-row pt4">
+                <label class="col-md-7 col-form-label" for="name"><h1>John Doe's Dashboard</h1></label>
+                <p-dropdown class="col-md-3" [options]="cities" [style]="{'width': '100%'}"></p-dropdown>
+            </div>
               <br>
-              <div class="row pl6">
-                <div class="col-md-5">
-                  <div class="card kpi-tile">
-                    <div class="card-header card-title bg-dark">
-                      Total Count
-                      </div>
-                      <div class="card-body bg-secondary">
-                        <kpi-pie-chart [kpiData]="userTasksData"></kpi-pie-chart>
-                      </div>
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="card kpi-tile">
-                    <div class="card-header card-title bg-dark">
-                      Yearly Progress
+            <div class="row pl6">
+              <div class="col-md-5">
+                <div class="card kpi-tile">
+                  <div class="card-header card-title bg-dark">
+                    Total Count
                     </div>
                     <div class="card-body bg-secondary">
-                        <kpi-line-chart></kpi-line-chart>
+                      <kpi-pie-chart [kpiData]="userTasksData"></kpi-pie-chart>
                     </div>
-                  </div>
-                  </div>
+                </div>
               </div>
+              <div class="col-md-6">
+                <div class="card kpi-tile">
+                  <div class="card-header card-title bg-dark">
+                    Yearly Progress
+                  </div>
+                  <div class="card-body bg-secondary">
+                      <kpi-line-chart></kpi-line-chart>
+                  </div>
+                </div>
+                </div>
+            </div>
         </mat-sidenav-content>
       </mat-sidenav-container>      
 </section>

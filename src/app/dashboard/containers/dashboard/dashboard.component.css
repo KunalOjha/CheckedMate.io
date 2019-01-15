@@ -32,6 +32,18 @@
     color: lightcyan;
 }
 
+.kpi-tile {
+    height: 100%;
+}
+
 .card-title {
-    color: lightcyan
+    color: lightcyan;
+}
+
+.card-header {
+    box-shadow: 0px -4px 13px -12px rgba(0,0,0,0.75);
+}
+
+.card-body {
+    box-shadow: 0px 6px 45px -12px rgba(0,0,0,0.75);
 }

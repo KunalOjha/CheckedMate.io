@@ -15,12 +15,10 @@ import { shareReplay } from 'rxjs/operators';
 })
 export class DashboardComponent implements OnInit {
   cities = [
-    {label:'Select City', value:null},
-    {label:'New York', value:{id:1, name: 'New York', code: 'NY'}},
-    {label:'Rome', value:{id:2, name: 'Rome', code: 'RM'}},
-    {label:'London', value:{id:3, name: 'London', code: 'LDN'}},
-    {label:'Istanbul', value:{id:4, name: 'Istanbul', code: 'IST'}},
-    {label:'Paris', value:{id:5, name: 'Paris', code: 'PRS'}}
+    {label:'Summary', value:{id:1, name: 'New York', code: 'NY'}},
+    {label:'Due', value:{id:2, name: 'Rome', code: 'RM'}},
+    {label:'Upcoming', value:{id:3, name: 'London', code: 'LDN'}},
+    {label:'Completed', value:{id:4, name: 'Istanbul', code: 'IST'}},
 ];
   closeResult: string;
 

@@ -7,9 +7,8 @@ import { Component, OnInit, Input, OnChanges, SimpleChanges, ChangeDetectorRef }
 })
 export class KpiPieChartComponent implements OnInit, OnChanges {
     @Input() kpiData;
-    completed: number;
-    due: number;
-    upcoming: number;
+    labels: string[] = ['Due','Upcoming','Completed'];
+    backgroundColor = ["#FF0000", "#36A2EB", "#228b22"];
     
     constructor(private cd: ChangeDetectorRef) { }
 
@@ -21,20 +20,12 @@ export class KpiPieChartComponent implements OnInit, OnChanges {
         }
     };
     data = {
-        labels: ['Due','Upcoming','Completed'],
+        labels: this.labels,
         datasets: [
             {
-                data: [this.due, this.upcoming, this.completed],
-                backgroundColor: [
-                    "#FF0000",
-                    "#36A2EB",
-                    "#228b22"
-                ],
-                hoverBackgroundColor: [
-                    "#FF0000",
-                    "#36A2EB",
-                    "#228b22"
-                ]
+                data: [0, 0, 0],
+                backgroundColor: this.backgroundColor,
+                hoverBackgroundColor: this.backgroundColor
             }]    
         };
     
@@ -43,15 +34,9 @@ export class KpiPieChartComponent implements OnInit, OnChanges {
 
     ngOnChanges(changes: SimpleChanges){
         if (changes['kpiData'].currentValue !== changes['kpiData'].previousValue) {
-            const userKpiData = changes['kpiData'].currentValue['count'];
-            console.log(userKpiData);
-
-            this.completed = userKpiData.completed;
-            this.due = userKpiData.due;
-            this.upcoming = userKpiData.upcoming
-
-            //this.chart.refresh();
             
+            const userKpiData = changes['kpiData'].currentValue['count'];
+            this.data.datasets[0].data = [userKpiData.due, userKpiData.upcoming, userKpiData.completed];
         }
     }
 }
