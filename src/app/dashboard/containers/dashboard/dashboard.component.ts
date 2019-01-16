@@ -4,8 +4,9 @@ import { TodoFormComponent } from '../todo-form/todo-form.component';
 import { Store } from '@ngrx/store';
 import { IAppState } from '../../../store/reducers';
 import { Observable, Subscription } from 'rxjs';
-import * as fromTasksSummary from '../../../store/reducers/tasksSummary-reducer';
+import * as fromTasksSummary from '../../../store/reducers/tasksSummary.reducer';
 import { shareReplay } from 'rxjs/operators';
+import * as fromState from '../../../store/reducers';
 
 
 @Component({
