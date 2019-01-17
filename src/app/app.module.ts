@@ -10,16 +10,19 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { EffectsModule } from '@ngrx/effects';
 import { AppEffects } from './store/effects/app.effects';
-import { LoginModule } from './login/login.module';
+import { AuthModule } from './auth/auth.module';
+import { ComponentComponent } from './component/component.component';
+
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ComponentComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    LoginModule,
+    AuthModule,
     DashboardModule,
     StoreModule.forRoot(reducers, { metaReducers }),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
