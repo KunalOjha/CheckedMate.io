@@ -16,9 +16,9 @@ export class LoginPortalComponent implements OnInit {
   ngOnInit() {
   }
 
-  onSubmitCredentials() {
-    this.router.navigate(['/dashboard']);
-    this.store.dispatch(new Login())
+  onSubmitCredentials(event) {
+    this.store.dispatch(new Login());
+    // this.router.navigate(['/dashboard']);
   }
 
 }

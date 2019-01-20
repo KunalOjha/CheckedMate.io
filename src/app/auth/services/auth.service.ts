@@ -20,7 +20,7 @@ export class AuthService {
   private _authFlag = 'isLoggedIn';
 
   // Authentication navigation
-  private _onAuthSuccessUrl = '/home';
+  private _onAuthSuccessUrl = '/dashboard';
   private _onAuthFailureUrl = '/login';
   private _logoutUrl = 'http://localhost:4200';
   private _expiresAt: number;
@@ -32,10 +32,10 @@ export class AuthService {
   checkSession$ = bindNodeCallback(this._Auth0.checkSession.bind(this._Auth0));
 
   auth0 = new auth0.WebAuth({
-    clientID: 'KSe06QDuwYMlR5RYgbKfIO2eRzii0XPv',
+    clientID: 'MWQVQEihbax7gVJXAeM2GRJ05PrQdk7E',
     domain: 'travellist.auth0.com',
     responseType: 'token id_token',
-    redirectUri: 'http://localhost:3000/callback',
+    redirectUri: 'http://localhost:4200/callback',
     scope: 'openid'
   });
 
