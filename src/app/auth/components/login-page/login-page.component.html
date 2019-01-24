@@ -23,4 +23,12 @@
     </ng-template>
   </ngb-carousel>
 </div>
-<login-portal></login-portal>
+<!-- Portal Component -->
+<div *ngIf="onLoginPage;then loginPortal else signupPortal">
+</div>    
+<ng-template #loginPortal>
+  <login-portal></login-portal>
+</ng-template>
+<ng-template #signupPortal>
+  <signup-portal></signup-portal>
+</ng-template>

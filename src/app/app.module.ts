@@ -1,16 +1,16 @@
+import { environment } from '../environments/environment';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+import { AuthModule } from './auth/auth.module';
 import { DashboardModule } from './dashboard/dashboard.module';
-import { AuthGuard } from './auth.guard';
 import { StoreModule } from '@ngrx/store';
-import { reducers, metaReducers } from './store/reducers';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { environment } from '../environments/environment';
 import { EffectsModule } from '@ngrx/effects';
 import { AppEffects } from './store/effects/app.effects';
-import { LoginModule } from './login/login.module';
+import { reducers, metaReducers } from './store/reducers';
+import { AppComponent } from './app.component';
+import { AuthGuard } from './auth.guard';
 
 @NgModule({
   declarations: [
@@ -19,7 +19,7 @@ import { LoginModule } from './login/login.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    LoginModule,
+    AuthModule,
     DashboardModule,
     StoreModule.forRoot(reducers, { metaReducers }),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
