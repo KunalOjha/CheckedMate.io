@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { NgForm } from '@angular/forms';
+import { AuthService } from '../../auth.service';
 
 @Component({
   selector: 'login-portal',
@@ -8,12 +10,17 @@ import { Router } from '@angular/router';
 })
 export class LoginPortalComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private auth: AuthService) { }
 
   ngOnInit() {
   }
 
-  onSubmitCredentials() {
+  onSubmitLogin(form: NgForm) {
+    const email = form.value.email;
+    const password = form.value.password;
+   
+    this.auth.loginUser(email, password);
+
     this.router.navigate(['/dashboard']);
   }
 

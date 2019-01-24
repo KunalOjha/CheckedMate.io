@@ -1,0 +1,17 @@
+<div id="loginPortal-container">
+  <h1>Log In</h1>
+  <form class="login-form" #form="ngForm">
+    <mat-form-field>
+      <input matInput type="email" name="email" ngModel placeholder="Email">
+    </mat-form-field>
+    <br>
+    <mat-form-field class="example-full-width">
+      <input matInput type="password" name="password" ngModel placeholder="Password">
+    </mat-form-field>
+    <br>
+    <button (click)="onSubmitLogin(form)" mat-raised-button color="warn">Log In</button>
+    <hr>
+    <h5>New User?</h5>
+    <a routerLink='/register'>Register Here!</a>
+  </form>
+</div>
