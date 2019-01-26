@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material';
-import { TodoFormComponent } from '../todo-form/todo-form.component';
+import { ItemFormComponent } from '../item-form/item-form.component';
 import { Store } from '@ngrx/store';
 import { IAppState } from '../../../store/reducers';
 import { Observable, Subscription } from 'rxjs';
@@ -28,9 +28,9 @@ export class DashboardComponent implements OnInit {
   constructor(private store: Store<IAppState>, private dialog: MatDialog) {}
   
   openDialog() {
-    this.dialog.open(TodoFormComponent, {
+    this.dialog.open(ItemFormComponent, {
       width: '30%',
-      panelClass: 'todo-dialog'
+      panelClass: 'item-dialog'
     })
   }
 

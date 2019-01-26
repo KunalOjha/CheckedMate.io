@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import * as firebase from 'firebase';
 import {UserCredential} from '@firebase/auth-types';
-import { UserData } from '../../models.ts/signup.model';
+import { User } from '../../models.ts/signup.model';
 
 @Injectable({
   providedIn: 'root'
@@ -10,12 +10,13 @@ export class AuthService {
 
   constructor() { }
 
-  signupUser(userData: UserData) { 
-    firebase.auth().createUserWithEmailAndPassword(userData.email, userData.password)
-    .then(function(user) {
-      return user.user.updateProfile(
+  signupUser(user: User) { 
+    firebase.auth().createUserWithEmailAndPassword(user.email, user.password)
+    .then(function(userData) {
+      sessionStorage.setItem('uid', userData.user.uid);
+      return userData.user.updateProfile(
         {
-          'displayName' : userData.firstname + '' + userData.lastname,
+          'displayName' : user.firstname + '' + user.lastname,
           'photoURL' : ''
         })
     })

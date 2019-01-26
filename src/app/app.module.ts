@@ -11,6 +11,7 @@ import { AppEffects } from './store/effects/app.effects';
 import { reducers, metaReducers } from './store/reducers';
 import { AppComponent } from './app.component';
 import { AuthGuard } from './auth.guard';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { AuthGuard } from './auth.guard';
   ],
   imports: [
     BrowserModule,
+    SharedModule,
     AppRoutingModule,
     AuthModule,
     DashboardModule,
