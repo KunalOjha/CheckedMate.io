@@ -12,6 +12,7 @@ import { reducers, metaReducers } from './store/reducers';
 import { AppComponent } from './app.component';
 import { AuthGuard } from './auth.guard';
 import { SharedModule } from './shared/shared.module';
+import { UserEffects } from './store/effects/user.effects';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { SharedModule } from './shared/shared.module';
     AppRoutingModule,
     AuthModule,
     DashboardModule,
+    EffectsModule.forRoot([UserEffects]),
     StoreModule.forRoot(reducers, { metaReducers }),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
     EffectsModule.forRoot([AppEffects])

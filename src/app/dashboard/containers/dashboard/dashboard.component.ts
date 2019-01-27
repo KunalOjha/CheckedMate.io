@@ -4,7 +4,7 @@ import { ItemFormComponent } from '../item-form/item-form.component';
 import { Store } from '@ngrx/store';
 import { IAppState } from '../../../store/reducers';
 import { Observable, Subscription } from 'rxjs';
-import * as fromTasksSummary from '../../../store/reducers/tasksSummary-reducer';
+import * as fromTasksSummary from '../../../store/reducers/tasksSummary.reducer';
 import { shareReplay } from 'rxjs/operators';
 
 
@@ -22,8 +22,9 @@ export class DashboardComponent implements OnInit {
 ];
   closeResult: string;
 
-  userTasksData: fromTasksSummary.State;
+  userKpiData: fromTasksSummary.State;
   tasksSummary$: Subscription;
+  user;
 
   constructor(private store: Store<IAppState>, private dialog: MatDialog) {}
   
@@ -35,10 +36,11 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.user = this.store.select('user');
    this.tasksSummary$ = this.store.select('tasksSummary').pipe(
       shareReplay()
     ).subscribe( data => {
-      this.userTasksData = data
+      this.userKpiData = data
     })
   }
 

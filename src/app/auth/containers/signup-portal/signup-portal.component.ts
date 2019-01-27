@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../auth.service';
+import { IAppState } from '../../../store/reducers';
+import { Store } from '@ngrx/store';
+import { createUser } from '../../../store/actions/user.actions';
 
 @Component({
   selector: 'signup-portal',
@@ -10,14 +13,15 @@ import { AuthService } from '../../auth.service';
 })
 export class SignupPortalComponent implements OnInit {
 
-  constructor(private router: Router, private auth: AuthService) { }
+  constructor(private router: Router, private auth: AuthService, private store: Store<IAppState>) { }
 
   ngOnInit() {
   }
 
   onSubmitSignUp(form: NgForm) {
-    this.auth.signupUser(form.value)
-
+    //this.auth.signupUser(form.value)
+    alert('signup called')
+    this.store.dispatch(new createUser(form.value))
     this.router.navigate(['/dashboard']);
   }
 

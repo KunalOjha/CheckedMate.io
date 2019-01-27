@@ -14,7 +14,7 @@
             <li class="dashboard-sidenav-option pa3">Menu Option 5</li>
         </mat-sidenav>
         <mat-sidenav-content>
-            <app-kpi [kpiData]="userTasksData"></app-kpi>
+            <app-kpi [kpiData]="userKpiData"></app-kpi>
               <div class="dashboard-heading form-row pt4">
                 <label class="col-md-7 col-form-label" for="name"><h1>John Doe's Dashboard</h1></label>
                 <p-dropdown class="col-md-3" [options]="cities" [style]="{'width': '100%'}"></p-dropdown>
@@ -27,7 +27,7 @@
                     Total Count
                     </div>
                     <div class="card-body bg-secondary">
-                      <kpi-pie-chart [kpiData]="userTasksData"></kpi-pie-chart>
+                      <kpi-pie-chart [kpiData]="userKpiData"></kpi-pie-chart>
                     </div>
                 </div>
               </div>
@@ -45,3 +45,6 @@
         </mat-sidenav-content>
       </mat-sidenav-container>      
 </section>
+<pre>
+  {{ (user | async) | json}}
+</pre>

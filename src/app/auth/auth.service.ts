@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import * as firebase from 'firebase';
 import {UserCredential} from '@firebase/auth-types';
-import { User } from '../../models.ts/signup.model';
+import { NewUser } from 'models.ts/user.model';
+import { from, Observable } from 'rxjs';
+import { switchMap, tap, take } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -10,19 +12,15 @@ export class AuthService {
 
   constructor() { }
 
-  signupUser(user: User) { 
-    firebase.auth().createUserWithEmailAndPassword(user.email, user.password)
-    .then(function(userData) {
-      sessionStorage.setItem('uid', userData.user.uid);
-      return userData.user.updateProfile(
-        {
-          'displayName' : user.firstname + '' + user.lastname,
-          'photoURL' : ''
-        })
-    })
-      .catch(
-        error => console.log(error)
-      )
+  signupUser(user: NewUser) { 
+    alert('signupUser function called!!')
+    return from(firebase.auth().createUserWithEmailAndPassword(user.email, user.password)).pipe(
+      tap(userData => {
+        sessionStorage.setItem('uid', userData.user.uid);
+
+        userData.user.updateProfile({'displayName' : user.firstname + '' + user.lastname, 'photoURL' : ''})
+      }),
+    )
   }
 
   loginUser(email: string, password: string) {
