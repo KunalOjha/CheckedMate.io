@@ -1,6 +1,6 @@
 <div id="signupPortal-container">
   <h1>Sign Up</h1>
-  <form class="signup-form" #form="ngForm">
+  <form class="signup-form" (ngSubmit)="onSubmitSignUp(form)" #form="ngForm">
     <mat-form-field>
         <input matInput type="text" name="firstname" ngModel placeholder="First Name">
       </mat-form-field>
@@ -15,7 +15,7 @@
       <input matInput type="password" name="password" ngModel placeholder="Password">
     </mat-form-field>
     <br>
-    <button (click)="onSubmitSignUp(form)" mat-raised-button color="warn">Submit</button>
+    <button type="submit" mat-raised-button color="warn">Submit</button>
     <hr>
     <h5>Existing User?</h5>
     <a routerLink='/login'>Go to Login</a>

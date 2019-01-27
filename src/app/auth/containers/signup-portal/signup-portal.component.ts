@@ -19,9 +19,8 @@ export class SignupPortalComponent implements OnInit {
   }
 
   onSubmitSignUp(form: NgForm) {
-    //this.auth.signupUser(form.value)
-    alert('signup called')
     this.store.dispatch(new createUser(form.value))
+    
     this.router.navigate(['/dashboard']);
   }
 

@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { Actions, Effect, ofType } from "@ngrx/effects";
-import { switchMap, take } from "rxjs/operators";
+import { switchMap, take, tap, map, catchError } from "rxjs/operators";
 import { CREATE_USER, LOGIN_USER, createUser, createUserSuccess, createUserError } from '../actions/user.actions'
 import { AuthService } from "../../auth/auth.service";
 
@@ -8,16 +8,19 @@ import { AuthService } from "../../auth/auth.service";
 export class UserEffects {
     
     @Effect()
-    authUser$ = this.actions$.pipe(
+    authNewUser$ = this.actions$.pipe(
         ofType(CREATE_USER),
         switchMap((action: createUser) => {
-            alert('in effects');
-            return this.authService.signupUser(action.payload);
+            const userData = action.payload;
+            return this.authService.signupUser(userData).pipe(
+                map(userData => new createUserSuccess({
+                    'firstName': action.payload.firstname,
+                    'lastName' : action.payload.lastname
+                    }),
+                ),
+            );
         })
-    ).subscribe(
-        userData => new createUserSuccess(),
-        error => new createUserError()
-        )
+    )
     
     constructor(private actions$: Actions, private authService: AuthService) {}
 }

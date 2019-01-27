@@ -13,7 +13,6 @@ export class AuthService {
   constructor() { }
 
   signupUser(user: NewUser) { 
-    alert('signupUser function called!!')
     return from(firebase.auth().createUserWithEmailAndPassword(user.email, user.password)).pipe(
       tap(userData => {
         sessionStorage.setItem('uid', userData.user.uid);

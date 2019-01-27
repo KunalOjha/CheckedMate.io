@@ -1,5 +1,5 @@
 import { Action } from '@ngrx/store';
-import { NewUser, UserCredentials } from 'models.ts/user.model';
+import { NewUser, UserCredentials, UserLoginSuccess } from 'models.ts/user.model';
 
 export const CREATE_USER = 'CREATE_USER';
 export const CREATE_USER_SUCCESS = 'CREATE_USER_SUCCESS';
@@ -22,6 +22,8 @@ export class loginUser implements Action {
 
 export class createUserSuccess implements Action {
     readonly type = CREATE_USER_SUCCESS;
+
+    constructor(readonly payload: UserLoginSuccess) {}
 }
 
 export class createUserError implements Action {
@@ -30,6 +32,8 @@ export class createUserError implements Action {
 
 export class loginUserSuccess implements Action {
     readonly type = LOGIN_USER_SUCCESS;
+
+    constructor(readonly payload: UserLoginSuccess) {}
 }
 
 export class loginUserError implements Action {

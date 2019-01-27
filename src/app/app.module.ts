@@ -24,10 +24,9 @@ import { UserEffects } from './store/effects/user.effects';
     AppRoutingModule,
     AuthModule,
     DashboardModule,
-    EffectsModule.forRoot([UserEffects]),
     StoreModule.forRoot(reducers, { metaReducers }),
+    EffectsModule.forRoot([UserEffects]),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
-    EffectsModule.forRoot([AppEffects])
   ],
   providers: [AuthGuard],
   bootstrap: [AppComponent]

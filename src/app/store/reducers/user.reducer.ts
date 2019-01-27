@@ -3,13 +3,17 @@ import { userActions } from "../actions/user.actions";
 
 export interface State {
     isLoggedIn: boolean,
+    firstName: string,
+    lastName: string,
     toDo?: { taskId : Item }[],
     upcoming?: { taskId : Item }[],
     completed?: { taskId : Item }[],
 }
   
  const INITIAL_USER_STATE: State  = {
-     isLoggedIn : false,
+     isLoggedIn : true,
+     firstName : null,
+     lastName : null
  }
 
  export function userReducer(state = INITIAL_USER_STATE, action: userActions) {
@@ -17,15 +21,15 @@ export interface State {
         case 'CREATE_USER_SUCCESS':
         case 'LOGIN_USER_SUCCESS':
             return {
-                isLoggedIn : true,
-                ...state
+                ...state,
+                firstName : action.payload.firstName,
+                lastName : action.payload.lastName,
+                isLoggedIn : true
             }
 
         case 'CREATE_USER_ERROR':
         case 'LOGIN_USER_ERROR':
-        alert('in reducer');
             return INITIAL_USER_STATE
     }
-
     return state;
 }
