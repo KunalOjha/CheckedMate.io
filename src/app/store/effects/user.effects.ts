@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { Actions, Effect, ofType } from "@ngrx/effects";
 import { switchMap, take, tap, map, catchError } from "rxjs/operators";
-import { CREATE_USER, LOGIN_USER, createUser, createUserSuccess, createUserError } from '../actions/user.actions'
+import { CREATE_USER, LOGIN_USER, createUser, createUserSuccess, createUserError, loginUser, loginUserSuccess } from '../actions/user.actions'
 import { AuthService } from "../../auth/auth.service";
 
 @Injectable()
@@ -17,8 +17,18 @@ export class UserEffects {
                     'firstName': action.payload.firstname,
                     'lastName' : action.payload.lastname
                     }),
-                ),
+                )
             );
+        })
+    )
+
+    @Effect()
+    loginUser$ = this.actions$.pipe(
+        ofType(LOGIN_USER),
+        switchMap((action: loginUser) => {
+            alert('picked up in effects')
+            return this.authService.loginUser(action.payload.email, action.payload.password).pipe(
+                map(userData => new loginUserSuccess()))
         })
     )
     

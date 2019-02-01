@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { AuthService } from '../../auth.service';
+import { IAppState } from '../../../store/reducers';
+import { Store } from '@ngrx/store';
+import { loginUser } from '../../../store/actions/user.actions';
 
 @Component({
   selector: 'login-portal',
@@ -10,18 +13,14 @@ import { AuthService } from '../../auth.service';
 })
 export class LoginPortalComponent implements OnInit {
 
-  constructor(private router: Router, private auth: AuthService) { }
+  constructor(private store: Store<IAppState>, private router: Router, private auth: AuthService) { }
 
   ngOnInit() {
   }
 
   onSubmitLogin(form: NgForm) {
-    const email = form.value.email;
-    const password = form.value.password;
-   
-    this.auth.loginUser(email, password);
-
-    this.router.navigate(['/dashboard']);
+    const { email, password } = form.value;
+    this.store.dispatch(new loginUser({email, password}))
   }
 
 }

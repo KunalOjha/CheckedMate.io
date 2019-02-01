@@ -17,7 +17,7 @@ export class createUser implements Action {
 export class loginUser implements Action {
     readonly type = LOGIN_USER;
 
-    constructor(private payload : UserCredentials) {}
+    constructor(readonly payload : UserCredentials) {}
 }
 
 export class createUserSuccess implements Action {
@@ -33,7 +33,7 @@ export class createUserError implements Action {
 export class loginUserSuccess implements Action {
     readonly type = LOGIN_USER_SUCCESS;
 
-    constructor(readonly payload: UserLoginSuccess) {}
+   // constructor(readonly payload: UserLoginSuccess) {}
 }
 
 export class loginUserError implements Action {

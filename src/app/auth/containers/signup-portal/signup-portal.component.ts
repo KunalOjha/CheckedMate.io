@@ -20,8 +20,6 @@ export class SignupPortalComponent implements OnInit {
 
   onSubmitSignUp(form: NgForm) {
     this.store.dispatch(new createUser(form.value))
-    
-    this.router.navigate(['/dashboard']);
   }
 
 }

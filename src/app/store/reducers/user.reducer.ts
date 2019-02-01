@@ -19,7 +19,6 @@ export interface State {
  export function userReducer(state = INITIAL_USER_STATE, action: userActions) {
     switch(action.type) {
         case 'CREATE_USER_SUCCESS':
-        case 'LOGIN_USER_SUCCESS':
             return {
                 ...state,
                 firstName : action.payload.firstName,
