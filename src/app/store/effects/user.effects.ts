@@ -26,7 +26,6 @@ export class UserEffects {
     loginUser$ = this.actions$.pipe(
         ofType(LOGIN_USER),
         switchMap((action: loginUser) => {
-            alert('picked up in effects')
             return this.authService.loginUser(action.payload.email, action.payload.password).pipe(
                 map(userData => new loginUserSuccess()))
         })

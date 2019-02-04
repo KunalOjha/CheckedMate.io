@@ -6,6 +6,7 @@ import { IAppState } from '../../../store/reducers';
 import { Observable, Subscription } from 'rxjs';
 import * as fromTasksSummary from '../../../store/reducers/tasksSummary.reducer';
 import { shareReplay } from 'rxjs/operators';
+import { RequestUserTasks } from '../../../store/actions/tasks.actions';
 
 
 @Component({
@@ -25,6 +26,7 @@ export class DashboardComponent implements OnInit {
   userKpiData: fromTasksSummary.State;
   tasksSummary$: Subscription;
   user;
+  tasks;
 
   constructor(private store: Store<IAppState>, private dialog: MatDialog) {}
   
@@ -36,12 +38,14 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.store.dispatch(new RequestUserTasks());
     this.user = this.store.select('user');
-   this.tasksSummary$ = this.store.select('tasksSummary').pipe(
-      shareReplay()
-    ).subscribe( data => {
-      this.userKpiData = data
-    })
-  }
+    this.tasks = this.store.select('taskList');
+    this.tasksSummary$ = this.store.select('tasksSummary').pipe(
+        shareReplay()
+      ).subscribe( data => {
+        this.userKpiData = data
+      })
+    }
 
 }
