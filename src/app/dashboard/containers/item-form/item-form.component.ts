@@ -34,7 +34,7 @@ export class ItemFormComponent implements OnInit {
   onAddTask() {
     if (this.itemForm.dirty && this.itemForm.valid) {
       const item = this.itemForm.value;
-      this.itemStorageService.storeTask(item)
+      this.itemStorageService.addTask(item)
         .subscribe({error: (err) => console.log(err)})
 
       this.dialog.closeAll();

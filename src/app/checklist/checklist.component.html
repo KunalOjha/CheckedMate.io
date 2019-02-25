@@ -1,0 +1,27 @@
+<h2 class="pa3">Upcoming Tasks</h2>
+
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th scope="col">#</th>
+    <th scope="col">Type</th>
+    <th scope="col">Title</th>
+    <th scope="col">Description</th>
+    <th scope="col">Due Date</th>
+    <th></th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let task of (tasklist$ | async).todo; index as i">
+    <th>{{ i +1 }}</th>
+    <td>{{ task.category }}</td>
+    <td>{{ task.title }}</td>
+    <td>{{ task.description }}</td>
+    <td>{{ task.dueDate | date  }}</td>
+    <td>
+      <i class = "pi pi-check pr3"> </i> 
+      <i class="fas fa-edit"></i>
+    </td>
+  </tr>
+  </tbody>
+</table>

@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material';
-import { ItemFormComponent } from '../item-form/item-form.component';
 import { Store } from '@ngrx/store';
 import { IAppState } from '../../../store/reducers';
-import { Observable, Subscription } from 'rxjs';
+import { Subscription } from 'rxjs';
 import * as fromTasksSummary from '../../../store/reducers/tasksSummary.reducer';
 import { shareReplay } from 'rxjs/operators';
 import { RequestUserTasks } from '../../../store/actions/tasks.actions';
@@ -28,14 +26,7 @@ export class DashboardComponent implements OnInit {
   user;
   tasks;
 
-  constructor(private store: Store<IAppState>, private dialog: MatDialog) {}
-  
-  openDialog() {
-    this.dialog.open(ItemFormComponent, {
-      width: '30%',
-      panelClass: 'item-dialog'
-    })
-  }
+  constructor(private store: Store<IAppState>) {}
 
   ngOnInit() {
     this.store.dispatch(new RequestUserTasks());

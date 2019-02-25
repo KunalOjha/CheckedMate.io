@@ -14,18 +14,21 @@ import { AuthGuard } from './auth.guard';
 import { SharedModule } from './shared/shared.module';
 import { UserEffects } from './store/effects/user.effects';
 import { TasksEffects } from './store/effects/tasks.effects';
-import { AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireDatabase } from '@angular/fire/database';
+import { ChecklistModule } from './checklist/checklist.module';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
     SharedModule,
     AppRoutingModule,
     AuthModule,
+    ChecklistModule,
     DashboardModule,
     AngularFireModule.initializeApp(environment.firebase, 'checkthis-io'),
     StoreModule.forRoot(reducers, { metaReducers }),

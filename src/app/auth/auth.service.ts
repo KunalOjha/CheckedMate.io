@@ -28,8 +28,6 @@ export class AuthService {
   loginUser(email: string, password: string) {
     return from(firebase.auth().signInWithEmailAndPassword(email, password)).pipe(
       tap(userData => {
-        console.log('userdata from loginuser call', userData);
-
         sessionStorage.setItem('uid', userData.user.uid);
 
         this.router.navigate(['/dashboard']);

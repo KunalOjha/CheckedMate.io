@@ -2,11 +2,11 @@ import { Task } from "models.ts/task";
 import { TaskListActions, REQUEST_USER_TASKS, REQUEST_USER_TASKS_SUCCESS } from '../actions/tasks.actions';
 
 export interface State  {
-    todo: Task[]
+    taskList : Task[]
 }
 
 const INITIAL_TASK_LIST_STATE: State = {
-    todo: []
+    taskList : []
 }
 
 export function taskListReducer(state = INITIAL_TASK_LIST_STATE, action) {
@@ -14,7 +14,7 @@ export function taskListReducer(state = INITIAL_TASK_LIST_STATE, action) {
         case REQUEST_USER_TASKS_SUCCESS:
             return {
                 ...state,
-                todo: action.payload
+                taskList : action.payload
             } 
     }
     return state

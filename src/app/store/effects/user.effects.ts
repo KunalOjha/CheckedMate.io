@@ -22,18 +22,6 @@ export class UserEffects {
             );
         })
     )
-    getAllPosts() {
-        return this.db
-          .list('/posts')
-          .snapshotChanges()
-          .map(actions => {
-            return actions.map(a => {
-              const data = a.payload.val();
-              const id = a.payload.key;
-              return { id, ...data };
-            });
-          });
-      }
 
     @Effect()
     loginUser$ = this.actions$.pipe(

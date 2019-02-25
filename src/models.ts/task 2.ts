@@ -4,5 +4,3 @@ export interface Task {
     title: string,
     description: string
 }
-
-export type TaskCategory = 'to-do' | 'completed' | 'upcoming';

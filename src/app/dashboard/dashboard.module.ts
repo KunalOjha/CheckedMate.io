@@ -9,12 +9,14 @@ import { DashboardComponent } from './containers/dashboard/dashboard.component';
 import { KPIComponent } from './components/kpi/kpi.component';
 import { KpiPieChartComponent } from './components/kpi-pie-chart/kpi-pie-chart.component';
 import { KpiLineChartComponent } from './components/kpi-line-chart/kpi-line-chart.component'
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
+    RouterModule,
     MaterialsModule,
     ChartModule,
     DropdownModule

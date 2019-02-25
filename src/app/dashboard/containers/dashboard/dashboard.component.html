@@ -1,17 +1,11 @@
-<nav class="navbar navbar-dark bg-dark">
-  <span class="navbar-text">
-    CheckThis.io
-  </span>
-  <button class="btn btn-outline-success my-2 my-sm-0" type="button" (click)="openDialog()">Add Task</button>
-</nav>
 <section id="dashboard-container">
     <mat-sidenav-container class="dashboard-content">
         <mat-sidenav class="dashboard-sidenav" mode="side" opened>
-            <li class="dashboard-sidenav-option pa3">Menu Option 1</li>
-            <li class="dashboard-sidenav-option pa3">Menu Option 2</li>
-            <li class="dashboard-sidenav-option pa3">Menu Option 3</li>
-            <li class="dashboard-sidenav-option pa3">Menu Option 4</li>
-            <li class="dashboard-sidenav-option pa3">Menu Option 5</li>
+            <li class="dashboard-sidenav-option pa3">Summary</li>
+            <li class="dashboard-sidenav-option pa3">Completed</li>
+            <li class="dashboard-sidenav-option pa3">Overdue</li>
+            <li class="dashboard-sidenav-option pa3" routerLink='/checklist'><a>Upcoming</a></li>
+            <li class="dashboard-sidenav-option pa3">Archived</li>
         </mat-sidenav>
         <mat-sidenav-content>
             <app-kpi [kpiData]="userKpiData"></app-kpi>
