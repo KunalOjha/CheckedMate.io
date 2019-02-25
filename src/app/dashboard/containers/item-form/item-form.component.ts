@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material';
-import { ItemStorageService } from '../../../shared/item-storage.service';
+import { TasksService } from '../../../shared/tasks.service';
 
 @Component({
   selector: 'app-item-form',
@@ -25,7 +25,7 @@ export class ItemFormComponent implements OnInit {
   constructor(
     private dialog: MatDialog ,
     private formBuilder : FormBuilder, 
-    private itemStorageService: ItemStorageService
+    private itemStorageService: TasksService
     ) {}
 
   ngOnInit() {
@@ -34,7 +34,7 @@ export class ItemFormComponent implements OnInit {
   onAddTask() {
     if (this.itemForm.dirty && this.itemForm.valid) {
       const item = this.itemForm.value;
-      this.itemStorageService.storeItem(item)
+      this.itemStorageService.storeTask(item)
         .subscribe({error: (err) => console.log(err)})
 
       this.dialog.closeAll();

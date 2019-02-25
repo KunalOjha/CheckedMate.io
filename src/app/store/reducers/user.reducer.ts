@@ -1,13 +1,9 @@
-import { Item } from "models.ts/item.model";
 import { userActions } from "../actions/user.actions";
 
 export interface State {
     isLoggedIn: boolean,
     firstName: string,
     lastName: string,
-    toDo?: { taskId : Item }[],
-    upcoming?: { taskId : Item }[],
-    completed?: { taskId : Item }[],
 }
   
  const INITIAL_USER_STATE: State  = {

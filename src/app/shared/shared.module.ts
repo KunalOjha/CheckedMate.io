@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ItemStorageService } from './item-storage.service';
+import { TasksService } from './tasks.service';
 import { HttpModule } from '@angular/http';
 
 @NgModule({
@@ -9,6 +9,6 @@ import { HttpModule } from '@angular/http';
     HttpModule
   ],
   declarations: [],
-  providers: [ItemStorageService]
+  providers: [TasksService]
 })
 export class SharedModule { }

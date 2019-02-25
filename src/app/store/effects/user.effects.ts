@@ -3,6 +3,7 @@ import { Actions, Effect, ofType } from "@ngrx/effects";
 import { switchMap, take, tap, map, catchError } from "rxjs/operators";
 import { CREATE_USER, LOGIN_USER, createUser, createUserSuccess, createUserError, loginUser, loginUserSuccess } from '../actions/user.actions'
 import { AuthService } from "../../auth/auth.service";
+import { AngularFireDatabase } from "@angular/fire/database";
 
 @Injectable()
 export class UserEffects {
@@ -21,6 +22,18 @@ export class UserEffects {
             );
         })
     )
+    getAllPosts() {
+        return this.db
+          .list('/posts')
+          .snapshotChanges()
+          .map(actions => {
+            return actions.map(a => {
+              const data = a.payload.val();
+              const id = a.payload.key;
+              return { id, ...data };
+            });
+          });
+      }
 
     @Effect()
     loginUser$ = this.actions$.pipe(
@@ -31,5 +44,5 @@ export class UserEffects {
         })
     )
     
-    constructor(private actions$: Actions, private authService: AuthService) {}
+    constructor(private actions$: Actions, private authService: AuthService, private af: AngularFireDatabase) {}
 }

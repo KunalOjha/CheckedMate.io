@@ -15,6 +15,7 @@ import { SharedModule } from './shared/shared.module';
 import { UserEffects } from './store/effects/user.effects';
 import { TasksEffects } from './store/effects/tasks.effects';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFireDatabase } from '@angular/fire/database';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
     EffectsModule.forRoot([UserEffects, TasksEffects]),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
   ],
-  providers: [AuthGuard, AngularFirestore],
+  providers: [AuthGuard, AngularFireDatabase],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
