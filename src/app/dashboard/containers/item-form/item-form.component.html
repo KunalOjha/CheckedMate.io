@@ -1,0 +1,29 @@
+<form id="item-form" class="pa3" [formGroup]="itemForm" (ngSubmit)="onAddTask()">
+  <h2>New Task</h2>
+  <hr>
+  <mat-form-field class=" w-60 pt3">
+     <input matInput [matDatepicker]="picker" placeholder="Due Date" formControlName="dueDate">
+     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+     <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+  <mat-form-field class="w-60">
+     <mat-select placeholder="Category" formControlName="category" >
+        <mat-option *ngFor="let cat of categories" [value]="cat">
+           {{cat}}
+        </mat-option>
+     </mat-select>
+  </mat-form-field>
+  <br>
+  <mat-form-field class="w-80">
+     <input class="sticky-note" matInput placeholder="Title" formControlName="title">
+  </mat-form-field>
+  <br>
+  <mat-form-field class="w-80">
+     <textarea class="sticky-note" matInput placeholder="Description" formControlName="description"></textarea>
+  </mat-form-field>
+  <br>
+  <div class="row">
+     <button class="btn btn-default pv3" type="button" (click)="onCancelTask()">Cancel</button>
+     <button id="item-submit-button" class="btn btn-success pv3" type="submit">Add</button>
+  </div>
+</form>

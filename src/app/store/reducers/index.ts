@@ -3,16 +3,22 @@ import {
   MetaReducer
 } from '@ngrx/store';
 
-import * as fromTasksSummary from './tasksSummary-reducer';
+import * as fromTasksSummary from '../reducers/tasksSummary.reducer';
+import * as fromUser from '../reducers/user.reducer';
+import * as fromTasks from '../reducers/tasks.reducer'
 
 import { environment } from '../../../environments/environment';
 
 export interface IAppState {
-  tasksSummary:  fromTasksSummary.State
+  user: fromUser.State,
+  tasksSummary:  fromTasksSummary.State,
+  taskList : fromTasks.State
 }
 
 export const reducers: ActionReducerMap<IAppState> = {
-  tasksSummary : fromTasksSummary.tasksSummaryReducer
+  user: fromUser.userReducer,
+  tasksSummary: fromTasksSummary.tasksSummaryReducer,
+  taskList: fromTasks.taskListReducer
 };
 
 export const metaReducers: MetaReducer<IAppState>[] = !environment.production ? [] : [];

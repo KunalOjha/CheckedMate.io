@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material';
-import { TodoFormComponent } from '../todo-form/todo-form.component';
+import { ItemFormComponent } from '../item-form/item-form.component';
 import { Store } from '@ngrx/store';
 import { IAppState } from '../../../store/reducers';
 import { Observable, Subscription } from 'rxjs';
-import * as fromTasksSummary from '../../../store/reducers/tasksSummary-reducer';
+import * as fromTasksSummary from '../../../store/reducers/tasksSummary.reducer';
 import { shareReplay } from 'rxjs/operators';
+import { RequestUserTasks } from '../../../store/actions/tasks.actions';
 
 
 @Component({
@@ -22,24 +23,29 @@ export class DashboardComponent implements OnInit {
 ];
   closeResult: string;
 
-  userTasksData: fromTasksSummary.State;
+  userKpiData: fromTasksSummary.State;
   tasksSummary$: Subscription;
+  user;
+  tasks;
 
   constructor(private store: Store<IAppState>, private dialog: MatDialog) {}
   
   openDialog() {
-    this.dialog.open(TodoFormComponent, {
+    this.dialog.open(ItemFormComponent, {
       width: '30%',
-      panelClass: 'todo-dialog'
+      panelClass: 'item-dialog'
     })
   }
 
   ngOnInit() {
-   this.tasksSummary$ = this.store.select('tasksSummary').pipe(
-      shareReplay()
-    ).subscribe( data => {
-      this.userTasksData = data
-    })
-  }
+    this.store.dispatch(new RequestUserTasks());
+    this.user = this.store.select('user');
+    this.tasks = this.store.select('taskList');
+    this.tasksSummary$ = this.store.select('tasksSummary').pipe(
+        shareReplay()
+      ).subscribe( data => {
+        this.userKpiData = data
+      })
+    }
 
 }

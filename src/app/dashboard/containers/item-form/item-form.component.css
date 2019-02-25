@@ -1,4 +1,4 @@
-#todo-form {
+#item-form {
     text-align: center;
     background: #ffffcc; 
     -moz-box-shadow:5px 5px 7px rgba(33,33,33,1);
@@ -6,13 +6,12 @@
     box-shadow: 5px 5px 7px rgba(33,33,33,.7);
 }
 
-#todo-form * {
+#item-form * {
     margin: 0 auto;
     font-family:"Comic Sans MS",arial,sans-serif;
-
 }
 
-#todo-submit-button {
+#item-submit-button {
     text-align: right !important;
     margin-top: 1.5rem;
 }

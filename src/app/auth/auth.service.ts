@@ -1,33 +1,39 @@
 import { Injectable } from '@angular/core';
 import * as firebase from 'firebase';
 import {UserCredential} from '@firebase/auth-types';
-import { UserData } from '../../models.ts/signup.model';
+import { NewUser } from 'models.ts/user.model';
+import { from, Observable, throwError } from 'rxjs';
+import { switchMap, tap, take } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
-  signupUser(userData: UserData) { 
-    firebase.auth().createUserWithEmailAndPassword(userData.email, userData.password)
-    .then(function(user) {
-      return user.user.updateProfile(
-        {
-          'displayName' : userData.firstname + '' + userData.lastname,
-          'photoURL' : ''
-        })
-    })
-      .catch(
-        error => console.log(error)
-      )
+  signupUser(user: NewUser) { 
+    return from(firebase.auth().createUserWithEmailAndPassword(user.email, user.password)).pipe(
+      tap(userData => {
+        sessionStorage.setItem('uid', userData.user.uid);
+
+        userData.user.updateProfile({'displayName' : user.firstname + '' + user.lastname, 'photoURL' : ''})
+
+        this.router.navigate(['/dashboard']);
+      }),
+    )
   }
 
   loginUser(email: string, password: string) {
-    firebase.auth().signInWithEmailAndPassword(email, password)
-      .then(response => console.log(response))
-      .catch(error => console.log(error))
+    return from(firebase.auth().signInWithEmailAndPassword(email, password)).pipe(
+      tap(userData => {
+        console.log('userdata from loginuser call', userData);
 
-  }
+        sessionStorage.setItem('uid', userData.user.uid);
+
+        this.router.navigate(['/dashboard']);
+      }
+    )
+    )}
 }
