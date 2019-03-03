@@ -8,9 +8,11 @@ import { IAppState } from '../../../store/reducers';
   styleUrls: ['./kpi.component.css']
 })
 export class KPIComponent implements OnInit, OnChanges {
-  taskSummary$;
-
-  @Input() kpiData;
+  @Input() taskCount = {
+    completed: 0,
+    pastDue: 0,
+    upcoming: 0
+  };
 
   constructor(private store : Store<IAppState>) { }
 
@@ -18,9 +20,9 @@ export class KPIComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    if (changes['kpiData'].currentValue !== changes['kpiData'].previousValue) {
+    if (changes['taskCount'].currentValue !== changes['taskCount'].previousValue) {
 
-      this.kpiData = changes['kpiData'].currentValue.count;
+      this.taskCount = changes['taskCount'].currentValue;
     }
   }
 

@@ -6,9 +6,10 @@ import { Component, OnInit, Input, OnChanges, SimpleChanges, ChangeDetectorRef }
   styleUrls: ['./kpi-pie-chart.component.css']
 })
 export class KpiPieChartComponent implements OnInit, OnChanges {
-    @Input() kpiData;
+    @Input() taskCount;
     labels: string[] = ['Due','Upcoming','Completed'];
     backgroundColor = ["#FF0000", "#36A2EB", "#228b22"];
+    changedData: { labels: string[]; datasets: { data: number[]; backgroundColor: string[]; hoverBackgroundColor: string[]; }[]; };
     
     constructor(private cd: ChangeDetectorRef) { }
 
@@ -23,7 +24,7 @@ export class KpiPieChartComponent implements OnInit, OnChanges {
         labels: this.labels,
         datasets: [
             {
-                data: [0, 0, 0],
+                data: [0, 0, 1],
                 backgroundColor: this.backgroundColor,
                 hoverBackgroundColor: this.backgroundColor
             }]    
@@ -33,10 +34,16 @@ export class KpiPieChartComponent implements OnInit, OnChanges {
     }
 
     ngOnChanges(changes: SimpleChanges){
-        if (changes['kpiData'].currentValue !== changes['kpiData'].previousValue) {
+        if (changes['taskCount'].currentValue !== changes['taskCount'].previousValue) {
             
-            const userKpiData = changes['kpiData'].currentValue['count'];
-            this.data.datasets[0].data = [userKpiData.due, userKpiData.upcoming, userKpiData.completed];
+            const userKpiData = changes['taskCount'].currentValue;
+            this.data.datasets[0].data = [userKpiData.pastDue, userKpiData.upcoming, userKpiData.completed];
+
+            this.data = Object.assign(
+                {}, 
+                this.data, 
+                this.data.datasets[0].data = [userKpiData.pastDue, userKpiData.upcoming, userKpiData.completed]
+                );
         }
     }
 }

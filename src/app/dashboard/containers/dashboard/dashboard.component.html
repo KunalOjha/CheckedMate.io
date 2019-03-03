@@ -8,7 +8,7 @@
             <li class="dashboard-sidenav-option pa3">Archived</li>
         </mat-sidenav>
         <mat-sidenav-content>
-            <app-kpi [kpiData]="userKpiData"></app-kpi>
+            <app-kpi [taskCount]="taskCount"></app-kpi>
               <div class="dashboard-heading form-row pt4">
                 <label class="col-md-7 col-form-label" for="name"><h1>John Doe's Dashboard</h1></label>
                 <p-dropdown class="col-md-3" [options]="cities" [style]="{'width': '100%'}"></p-dropdown>
@@ -21,7 +21,7 @@
                     Total Count
                     </div>
                     <div class="card-body bg-secondary">
-                      <kpi-pie-chart [kpiData]="userKpiData"></kpi-pie-chart>
+                      <kpi-pie-chart [taskCount]="taskCount"></kpi-pie-chart>
                     </div>
                 </div>
               </div>

@@ -1,15 +1,15 @@
 <section class="container-fluid">
   <div class="row">
       <div class="kpi-window col-md-4">
-          <div class="kpi-number f1">{{ kpiData.due }}</div>
+          <div class="kpi-number f1">{{ taskCount?.pastDue }}</div>
           <div class="kpi-label f3 dark-red">DUE</div>
         </div>
         <div class="kpi-window col-md-4">
-            <div class="kpi-number f1">{{ kpiData.upcoming }}</div>
+            <div class="kpi-number f1">{{ taskCount?.upcoming }}</div>
           <div class="kpi-label f3">UPCOMING</div>
         </div>
         <div class="kpi-window col-md-4">
-          <div class="kpi-number f1">{{ kpiData.completed }}</div>
+          <div class="kpi-number f1">{{ taskCount?.completed }}</div>
           <div class="kpi-label f3 green">COMPLETED</div>
         </div>
   </div>

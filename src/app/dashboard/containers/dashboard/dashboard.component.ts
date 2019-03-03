@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { IAppState } from '../../../store/reducers';
 import { Subscription } from 'rxjs';
-import * as fromTasksSummary from '../../../store/reducers/tasksSummary.reducer';
+import * as fromTasksList from '../../../store/reducers/tasks.reducer';
 import { shareReplay } from 'rxjs/operators';
 import { RequestUserTasks } from '../../../store/actions/tasks.actions';
+import { Task } from 'models.ts/task';
 
 
 @Component({
@@ -13,6 +14,7 @@ import { RequestUserTasks } from '../../../store/actions/tasks.actions';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
+  taskCount : {"completed": number, "pastDue": number, "upcoming": number}
   cities = [
     {label:'Summary', value:{id:1, name: 'New York', code: 'NY'}},
     {label:'Due', value:{id:2, name: 'Rome', code: 'RM'}},
@@ -21,21 +23,21 @@ export class DashboardComponent implements OnInit {
 ];
   closeResult: string;
 
-  userKpiData: fromTasksSummary.State;
+ 
   tasksSummary$: Subscription;
-  user;
-  tasks;
 
   constructor(private store: Store<IAppState>) {}
 
   ngOnInit() {
     this.store.dispatch(new RequestUserTasks());
-    this.user = this.store.select('user');
-    this.tasks = this.store.select('taskList');
-    this.tasksSummary$ = this.store.select('tasksSummary').pipe(
+    this.tasksSummary$ = this.store.select('taskList').pipe(
         shareReplay()
       ).subscribe( data => {
-        this.userKpiData = data
+        this.taskCount = {
+          "completed" : data.completed.length, 
+          "pastDue" :data.pastDue.length, 
+          "upcoming" : data.upcoming.length
+        };
       })
     }
 
